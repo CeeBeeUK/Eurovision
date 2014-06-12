@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Eurovision.Models.Event>
+@{
+    ViewBag.Title = "Event list";
+}
+
+<h2>@ViewBag.Message</h2>
+
+<p>
+	@Html.ImageAndTextLink(Url.Content("~/Content/Images/add.png"), "Create new Event", "Create new Event", "CreateEvent", null, null, null, null, "createButton")
+</p>
+
+@if (Model != null && Model.Count() > 0)
+{
+    foreach (var item in Model.OrderByDescending(x=>x.Year))
+    {
+        <div>
+        @Html.ImageAndTextLink(
+            Url.Content(string.Format("~/Content/Images/{0}.png", item.Country.largeimage)),
+            string.Format("{0} {1}", item.HostCity, item.Year),
+            string.Format("{0} {1}", item.HostCity, item.Year),
+            "EventDetails",
+            "Admin",
+            new { id = item.Year },
+            null,
+            null,
+            "createButton"
+            )
+            </div>
+    }
+}
+

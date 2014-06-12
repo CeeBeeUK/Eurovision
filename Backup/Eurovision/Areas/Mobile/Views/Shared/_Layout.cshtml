@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/> <!--320-->
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/form.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Areas/Mobile/Content/Mobile.css")" rel="stylesheet" type="text/css" />
+    @RenderSection("head", false)
+</head>
+
+<body>
+    <div class="page">
+
+        <div id="header">
+            <div id="title">
+                <h1><img alt="Eurovision" src="@Url.Content("~/Content/Images/EurovisionPlaqueSmall.png")" /></h1>
+            </div>
+
+            <div id="logindisplay">@Html.Partial("_LogOnPartial")</div>
+
+            <div id="menucontainer">
+                <ul id="menu">
+                    @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                    {
+                    if ((int)HttpContext.Current.Profile.GetPropertyValue("CurrentGame") == 0)
+                    {
+                    <li>@Html.ActionLink("Join game", "Join", "Game", new { id = DateTime.Now.Year }, null)</li>
+                    }
+                    else
+                    {
+                    <li>@Html.ActionLink(HttpContext.Current.Profile.GetPropertyValue("CurrentGame").ToString(),"Play", "Game")</li>
+                    }
+                    <li>@Html.ActionLink("My Profile", "Profile", "My")</li>
+                    if(HttpContext.Current.User.IsInRole("Admin"))
+                    {
+                    <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
+                    }
+                    }
+                    @if(Request.IsAuthenticated) {
+                        <li>@Html.ActionLink("Log Off", "LogOff", "Account")</li>
+                    }
+                    else {
+                        <li>@Html.ActionLink("Log On", "LogOn", "Account")</li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+
+        <div id="main">
+            @RenderBody()
+            <div id="footer">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

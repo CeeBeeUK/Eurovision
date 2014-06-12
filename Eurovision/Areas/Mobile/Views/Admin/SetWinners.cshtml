@@ -1,0 +1,27 @@
+﻿@model Eurovision.Models.EventWinnerVM
+
+@{
+    ViewBag.Title = string.Format("Set Winners for {0}",Model.Event.Year);
+}
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <ul class="form">
+        <li class="legend">@ViewBag.Title</li>
+        <li>
+            @Html.LabelFor(model => model.EventCountryEuroWinner)
+            @Html.DropDownListFor(model => model.EventCountryEuroWinner, Model.EventCountries,"Pick winner")
+        </li>
+        <li>
+            @Html.LabelFor(model => model.EventCountryHomeChamp)
+            @Html.DropDownListFor(model => model.EventCountryHomeChamp, Model.EventCountries,"Pick home champion")
+        </li>
+        <li id="send">
+            @Html.HiddenFor(model => model.Event.Year)
+            <input type="submit" value="Create" />
+        </li>
+        <li>
+            @Html.ValidationMessage("Error")
+        </li>
+    </ul>
+}

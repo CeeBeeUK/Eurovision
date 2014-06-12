@@ -1,0 +1,31 @@
+﻿@model Eurovision.Models.EventPlayer
+
+@{
+    ViewBag.Title = string.Format("Join {0} game", Model.Year);
+}
+@using (Html.BeginForm("Join", "Game", FormMethod.Post, new { @class = "form", autocomplete="off" }))
+{
+    <ul>   
+    @if (Model.PredictedUKScore > 0)
+    {
+        <li class="legend">Sorry, @HttpContext.Current.Profile.GetPropertyValue("DisplayName")</li>
+        <li>
+            You previously guessed @Model.PredictedUKScore for this years competition.  Please contact your administrator to change it!
+        </li>
+        <li id="send"><a href="@Url.Action("Play")" style="text-decoration:none;"><input type="button" value="Go" style="text-decoration:none;"/></a></li>
+    }
+    else
+    {
+        <li class="legend">Okay, @HttpContext.Current.Profile.GetPropertyValue("DisplayName") you want to play in @Model.Year?</li>
+        <li>Enter your UK score prediction and hit go...</li>
+        <li>
+            @Html.LabelFor(m => m.PredictedUKScore)    
+            @Html.TextBoxFor(m => m.PredictedUKScore, new { type = "number", pattern = "\\d*", style = "width:50px;" })
+        </li>
+        @Html.HiddenFor(m => m.PlayerGuid)
+        @Html.HiddenFor(m => m.Year)
+        <li id="send"><input type="submit" value = "Go"/></li>
+    }
+    </ul>
+}
+@Html.SetFocus(m => m.PredictedUKScore)

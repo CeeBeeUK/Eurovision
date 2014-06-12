@@ -1,0 +1,22 @@
+﻿@model Eurovision.Models.AssignPlayerVM
+@{
+    ViewBag.Title = string.Format("Assign player for {0} in {1}",Model.EventCountry.Country.Name,Model.EventCountry.Event.Year);
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("AssignPlayer", "Admin", FormMethod.Post, new { @class = "form", autocomplete="off" }))
+{
+    <ul>
+        <li>
+            @Html.LabelFor(m => m.PlayerGuid)
+            @Html.DropDownListFor(m => m.PlayerGuid, Model.Players, "Choose", null)
+        </li>
+        <li id="send">
+            @Html.HiddenFor(M => M.EventCountry.id)
+            @Html.HiddenFor(M => M.EventCountry.EventID)
+            <input type="submit" value="assign" />
+        </li>
+    </ul>
+}
+@Html.SetFocus(m => m.PlayerGuid)

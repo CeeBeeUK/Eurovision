@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Eurovision.Models.EventWithScoresVM>
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h6>Details</h6>
+
+@if (Model != null && Model.Count() > 0)
+{
+<table>
+    <tr>
+        <th>Country</th>
+        <th>Points</th>
+        <th>Votes</th>
+    </tr>
+    @foreach (var row in Model)
+	{
+	<tr>
+        <td>@row.Country</td>
+        <td>@row.Score</td>
+        <td>@row.Votes</td>     
+    </tr>
+	}
+</table>
+
+}

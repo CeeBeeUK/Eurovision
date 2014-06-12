@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eurovision", "Eurovision\Eurovision.csproj", "{23FACEC6-DF2B-4EBB-8FB3-6EE8D1DFDB05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eurovision.Tests", "Eurovision.Tests\Eurovision.Tests.csproj", "{6CA74B22-CA1D-47E6-86A5-1D404FB50CEC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23FACEC6-DF2B-4EBB-8FB3-6EE8D1DFDB05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23FACEC6-DF2B-4EBB-8FB3-6EE8D1DFDB05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23FACEC6-DF2B-4EBB-8FB3-6EE8D1DFDB05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23FACEC6-DF2B-4EBB-8FB3-6EE8D1DFDB05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CA74B22-CA1D-47E6-86A5-1D404FB50CEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CA74B22-CA1D-47E6-86A5-1D404FB50CEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CA74B22-CA1D-47E6-86A5-1D404FB50CEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CA74B22-CA1D-47E6-86A5-1D404FB50CEC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

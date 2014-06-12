@@ -1,0 +1,28 @@
+﻿@model Eurovision.Models.CreateEventVM
+@{
+    ViewBag.Title = "Create Event";
+}
+
+<h2>@ViewBag.Message</h2>
+
+@using (Html.BeginForm("CreateEvent","Admin", FormMethod.Post, new { @class = "form", autocomplete = "off" }))
+{
+    <ul>
+    <li>
+    @Html.LabelFor(m => m.Event.Year)
+    @Html.TextBoxFor(m => m.Event.Year, new { type = "number", pattern = "\\d*" })
+    </li>
+    <li>
+    @Html.LabelFor(m => m.Event.HostCity)
+    @Html.EditorFor(m => m.Event.HostCity)
+    </li>    
+    <li>
+    @Html.LabelFor(m => m.Event.CountryID)
+    @Html.DropDownListFor(m => m.Event.CountryID, Model.Countries, "Choose", null)
+    </li>
+    <li class="send">
+    <input type="submit" value="Create" />
+    </li>
+    </ul>
+}
+@Html.SetFocus(m => m.Event.Year)

@@ -1,0 +1,21 @@
+﻿@model Eurovision.Models.AddCountryVM
+@{
+    ViewBag.Title = string.Format("Add country to {0}", Model.Year);
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("AddCountry", "Admin", FormMethod.Post, new { @class = "form", autocomplete = "off" }))
+{
+    <ul>
+        <li>
+            @Html.LabelFor(m => m.CountryID)
+            @Html.DropDownListFor(m => m.CountryID, Model.Countries, "Choose",null)
+        </li>
+        <li>
+            @Html.HiddenFor(m => m.Year)
+            <input type="submit" value="Add country" />
+        </li>
+    </ul>
+}
+@Html.SetFocus(m => m.CountryID)

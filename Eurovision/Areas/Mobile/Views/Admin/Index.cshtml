@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Admin index";
+}
+
+<h2>@ViewBag.Message</h2>
+<ul>
+    <li>@Html.ActionLink("Countries", "ListCountries")</li>
+    <li>@Html.ActionLink("Events", "ListEvents")</li>
+    <li>@Html.ActionLink("Users", "Users")</li>
+</ul>

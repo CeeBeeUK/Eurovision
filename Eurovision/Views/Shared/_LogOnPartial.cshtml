@@ -1,0 +1,8 @@
+﻿@if (Request.IsAuthenticated)
+{
+    <text>Welcome <strong>@HttpContext.Current.Profile.GetPropertyValue("DisplayName")</strong>!</text>
+}
+else
+{
+    <text>&nbsp;</text>
+}
